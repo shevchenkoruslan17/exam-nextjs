@@ -1,0 +1,383 @@
+@import "tailwindcss";
+
+:root {
+    --background: #101018;
+    --surface: #1b1b29;
+    --surface-hover: #252538;
+    --text: #f4f4f8;
+    --muted: #a0a0b2;
+    --accent: #9b6dff;
+    --accent-hover: #8050e8;
+    --border: #303044;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    background: var(--background);
+    color: var(--text);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,input,select {
+    font: inherit;
+}
+
+button {
+    min-height: 42px;
+    padding: 0 20px;
+    color: white;
+    background: var(--accent);
+    border: none;
+    border-radius: 9px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+}
+
+button:hover {
+    background: var(--accent-hover);
+    transform: translateY(-2px);
+}
+
+header {
+    min-height: 75px;
+    padding: 0 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #171722;
+    border-bottom: 1px solid var(--border);
+}
+
+header h1 {
+    color: var(--accent);
+    font-size: 27px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+header nav {
+    display: flex;
+    gap: 25px;
+}
+
+header nav a {
+    color: var(--muted);
+    transition: color 0.2s;
+}
+
+header nav a:hover {
+    color: var(--accent);
+}
+
+header span {
+    color: var(--text);
+}
+
+main {
+    width: min(1200px, 90%);
+    margin: 40px auto;
+}
+
+main > h1 {
+    margin-bottom: 30px;
+    font-size: 34px;
+}
+
+form {
+    margin-bottom: 25px;
+}
+
+input,select {
+    min-height: 45px;
+    padding: 0 15px;
+    color: var(--text);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    outline: none;
+}
+
+input:focus,select:focus {
+    border-color: var(--accent);
+}
+
+.movies-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.movie-card {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    transition:
+            transform 0.25s,
+            border-color 0.25s,
+            box-shadow 0.25s;
+}
+
+.movie-card:hover {
+    transform: translateY(-7px);
+    border-color: var(--accent);
+    box-shadow: 0 12px 30px rgba(155, 109, 255, 0.15);
+}
+
+.movie-card__link {
+    display: block;
+}
+
+.movie-card__poster img {
+    display: block;
+    width: 100%;
+    height: 330px;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.movie-card__link:hover .movie-card__poster img {
+    transform: scale(1.03);
+}
+
+.movie-card__title {
+    padding: 15px 15px 5px;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.movie-card__rating {
+    padding: 5px 15px;
+}
+
+.movie-card__date {
+    padding: 5px 15px;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.movie-card__genres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    padding: 10px 15px 15px;
+}
+
+.empty-message {
+    padding: 50px 20px;
+    color: var(--muted);
+    font-size: 20px;
+    text-align: center;
+}
+
+.genre-badge {
+    display: inline-block;
+    margin: 4px;
+    padding: 5px 10px;
+    color: #d8c8ff;
+    background: #35264f;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+.rating {
+    color: #ffc857;
+    font-weight: 700;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin: 40px 0;
+}
+
+.pagination span {
+    color: var(--muted);
+}
+
+.movie-details {
+    display: block;
+    margin: 40px auto;
+    padding: 30px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+}
+
+.movie-details__back {
+    display: inline-block;
+    margin-bottom: 30px;
+    color: var(--accent);
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.movie-details__back:hover {
+    color: var(--accent-hover);
+}
+
+.movie-details__content {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 40px;
+}
+
+.movie-details__poster img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 14px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.movie-details__no-poster {
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    color: var(--muted);
+    background: var(--surface-hover);
+    border-radius: 14px;
+    text-align: center;
+}
+
+.movie-details__info h1 {
+    margin-bottom: 12px;
+    font-size: 36px;
+}
+
+.movie-details__tagline {
+    margin-bottom: 20px;
+    color: var(--muted);
+    font-size: 18px;
+    font-style: italic;
+    font-weight: 400;
+}
+
+.movie-details__rating {
+    margin-bottom: 25px;
+    color: #ffc857;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.movie-details__rating span {
+    margin-left: 10px;
+    color: var(--muted);
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.movie-details__overview {
+    margin-bottom: 25px;
+    color: #d0d0dc;
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+.movie-details__genres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 30px;
+}
+
+.movie-details__facts {
+    display: grid;
+    gap: 15px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+}
+
+.movie-details__facts p {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    color: var(--muted);
+}
+
+.movie-details__facts strong {
+    min-width: 120px;
+    color: var(--text);
+}
+
+.movie-details__facts span {
+    color: var(--muted);
+}
+
+@media (max-width: 1000px) {
+    .movies-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 700px) {
+    header {
+        padding: 15px 5%;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .movies-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 15px;
+    }
+
+    .movie-card__poster img {
+        height: 260px;
+    }
+
+    .movie-details {
+        padding: 20px;
+    }
+
+    .movie-details__content {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .movie-details__poster {
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    .movie-details__info h1 {
+        font-size: 27px;
+    }
+
+    main > h1 {
+        font-size: 27px;
+    }
+}
+
+@media (max-width: 450px) {
+    .movies-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .movie-card__poster img {
+        height: 400px;
+    }
+}
